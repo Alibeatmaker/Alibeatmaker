@@ -1081,14 +1081,30 @@ body.light .forgot-section p { color: #4a2b6e; }
 
 
 
-
-
-
-
-
-
-
-
 .hidden {
   display: none !important;
+}
+
+
+
+
+
+.form-page {
+  position: absolute;
+  width: 100%;
+  transition: all 0.6s ease;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.form-page.hidden-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  pointer-events: none;
+}
+
+.form-page.hidden-right {
+  opacity: 0;
+  transform: translateX(60px);
+  pointer-events: none;
 }
