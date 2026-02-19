@@ -210,12 +210,12 @@ h1 {
 }
 .styled-button__moving-block.back {
   color: white;
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
 }
 .styled-button__moving-block.back .styled-button__text-holder {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
 }
 .styled-button:hover,
 .styled-button:active {
@@ -224,13 +224,13 @@ h1 {
 }
 .styled-button:hover .face,
 .styled-button:active .face {
-  -webkit-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateX(200%);
+          transform: translateX(200%);
 }
 .styled-button:hover .face .styled-button__text-holder,
 .styled-button:active .face .styled-button__text-holder {
-  -webkit-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateX(-200%);
+          transform: translateX(-200%);
 }
 .styled-button:hover .back,
 .styled-button:active .back {
