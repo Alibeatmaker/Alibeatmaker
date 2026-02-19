@@ -212,7 +212,7 @@ h1 {
   color: white;
   -webkit-transform: translateX(-200%);
           transform: translateX(-200%);
-}
+} 
 .styled-button__moving-block.back .styled-button__text-holder {
   -webkit-transform: translateX(200%);
           transform: translateX(200%);
