@@ -1,0 +1,1094 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v20/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}
+body {
+  all: initial;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 0.02em;
+}
+* {
+  box-sizing: border-box;
+}
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  background: #3f2766;
+}
+.form {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 400px;
+  height: auto;
+  min-height: 400px;
+  flex-shrink: 0;
+  padding: 20px;
+  border-radius: 5px;
+}
+.form__loader {
+  display: -webkit-box;
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  z-index: -4;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.form__content {
+  text-align: center;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  position: relative;
+  opacity: 0;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  -webkit-transition: all 0.5s ease 0.7s;
+  transition: all 0.5s ease 0.7s;
+}
+.form__cover {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -4;
+  border-radius: 7px;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease 0.8s;
+  transition: all 0.3s ease 0.8s;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+.form__cover:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: #4d317a;
+  z-index: -4;
+  border-radius: 50%;
+  -webkit-transition: all 1.5s ease 0.3s;
+  transition: all 1.5s ease 0.3s;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+.form__cover:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: white;
+  z-index: -5;
+  border-radius: 50%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+body.on-start .form__cover:before {
+  -webkit-transform: scale(0.15);
+          transform: scale(0.15);
+}
+body.document-loaded .form__loader {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+  visibility: hidden;
+}
+body.document-loaded .form__content {
+  opacity: 1;
+  -webkit-transform: none;
+          transform: none;
+}
+body.document-loaded .form__cover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+body.document-loaded .form__cover:after {
+  -webkit-transform: scale(2);
+          transform: scale(2);
+}
+body.document-loaded .form__cover:before {
+  -webkit-transition: opacity 0.3s ease 0.8s, -webkit-transform 2s ease;
+  transition: opacity 0.3s ease 0.8s, -webkit-transform 2s ease;
+  transition: transform 2s ease, opacity 0.3s ease 0.8s;
+  transition: transform 2s ease, opacity 0.3s ease 0.8s, -webkit-transform 2s ease;
+  -webkit-transform: scale(2);
+          transform: scale(2);
+  opacity: 0;
+}
+h1 {
+  font-size: 40px;
+  margin: 15px 0 20px 0;
+  letter-spacing: 0.05em;
+  color: #714cab;
+  font-weight: 700;
+}
+.styled-button {
+  -webkit-appearance: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-size: 14px;
+  width: 100%;
+  padding: 20px;
+  outline: none;
+  background: none;
+  position: relative;
+  color: #492e72;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  border: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: #714cac;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.styled-button__real-text-holder {
+  position: relative;
+}
+.styled-button__real-text {
+  color: transparent;
+  display: inline-block;
+}
+.styled-button__text-holder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.styled-button__moving-block {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.styled-button__moving-block.back {
+  color: white;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.styled-button__moving-block.back .styled-button__text-holder {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.styled-button:hover,
+.styled-button:active {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  background: #7a51bb;
+}
+.styled-button:hover .face,
+.styled-button:active .face {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.styled-button:hover .face .styled-button__text-holder,
+.styled-button:active .face .styled-button__text-holder {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.styled-button:hover .back,
+.styled-button:active .back {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+.styled-button:hover .back .styled-button__text-holder,
+.styled-button:active .back .styled-button__text-holder {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+.styled-button:active {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.styled-input {
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.styled-input__circle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.styled-input__circle:after {
+  content: '';
+  position: absolute;
+  left: 16.5px;
+  top: 19px;
+  height: 14px;
+  width: 14px;
+  z-index: -2;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+  -webkit-transition: opacity 1s ease, -webkit-transform 0.6s ease;
+  transition: opacity 1s ease, -webkit-transform 0.6s ease;
+  transition: transform 0.6s ease, opacity 1s ease;
+  transition: transform 0.6s ease, opacity 1s ease, -webkit-transform 0.6s ease;
+}
+.styled-input__input {
+  width: 100%;
+  -webkit-appearance: none;
+  font-size: 14px;
+  outline: none;
+  background: none;
+  padding: 18px 15px;
+  color: #ceafff;
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+}
+.styled-input__placeholder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  z-index: -1;
+  padding-left: 45px;
+  color: white;
+}
+.styled-input__placeholder-text {
+  -webkit-perspective: 500px;
+          perspective: 500px;
+  display: inline-block;
+}
+.styled-input__placeholder-text .letter {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  -webkit-animation: letterAnimOut 0.25s ease forwards;
+          animation: letterAnimOut 0.25s ease forwards;
+  text-shadow: 0 0 5px;
+}
+.styled-input__placeholder-text .letter.active {
+  -webkit-animation: letterAnimIn 0.25s ease forwards;
+          animation: letterAnimIn 0.25s ease forwards;
+}
+.styled-input:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.styled-input.filled {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.styled-input.filled .styled-input__circle:after {
+  -webkit-transform: scale(37);
+          transform: scale(37);
+  opacity: 0;
+}
+@-webkit-keyframes letterAnimIn {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    color: red;
+  }
+  45% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+    color: red;
+  }
+  55% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+  }
+  56% {
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+    opacity: 0;
+    color: #00ff6b;
+  }
+  76% {
+    color: #00ff6b;
+    opacity: 1;
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+  }
+  100% {
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+    opacity: 1;
+  }
+}
+@keyframes letterAnimIn {
+  0% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  25% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    color: red;
+  }
+  45% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+    color: red;
+  }
+  55% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+  }
+  56% {
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+    opacity: 0;
+    color: #00ff6b;
+  }
+  76% {
+    color: #00ff6b;
+    opacity: 1;
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+  }
+  100% {
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+    opacity: 1;
+  }
+}
+@-webkit-keyframes letterAnimOut {
+  0% {
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: translate(-30px, -40px);
+            transform: translate(-30px, -40px);
+    opacity: 0;
+  }
+  45% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+  }
+  55% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+    color: red;
+  }
+  56% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    color: red;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+@keyframes letterAnimOut {
+  0% {
+    /* -webkit-transform: translate(-30px, -27px); */
+            /* transform: translate(-30px, -27px); */
+    opacity: 1;
+  }
+  25% {
+    -webkit-transform: translate(-30px, -40px);
+            transform: translate(-30px, -40px);
+    opacity: 0;
+  }
+  45% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+  }
+  55% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    opacity: 0;
+    color: red;
+  }
+  56% {
+    -webkit-transform: translate(0, 10px);
+            transform: translate(0, 10px);
+    color: red;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+}
+.spinner {
+  position: relative;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  -webkit-transition: all 0.2s ease 0s;
+  transition: all 0.2s ease 0s;
+}
+.spinner__circular {
+  -webkit-animation: rotate 1.5s linear infinite;
+          animation: rotate 1.5s linear infinite;
+  -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+.spinner__path {
+  stroke-dasharray: 1, 200;
+  stroke-dashoffset: 0;
+  -webkit-animation: dash 1.3s ease forwards 0.5s;
+          animation: dash 1.3s ease forwards 0.5s;
+  opacity: 0;
+  stroke-linecap: round;
+  stroke: #7b23ff;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  50% {
+    stroke-dasharray: 40, 200;
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 125, 200;
+    opacity: 1;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  50% {
+    stroke-dasharray: 40, 200;
+    opacity: 1;
+  }
+  100% {
+    stroke-dasharray: 125, 200;
+    opacity: 1;
+  }
+}
+/* ... بقیه CSS بدون تغییر ... */
+
+.styled-input {
+  width: 100%;
+  position: relative;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+  color: #fff;
+}
+
+.styled-button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.styled-input.error {
+  border-color: #ff3b3b;
+  animation: shake 0.4s ease;
+}
+.eye-icon {
+  transition: transform 0.25s ease;
+  transform-origin: center center;
+}
+
+/* حالت اولیه (چشم باز) */
+.eye-closed,
+.eye-slash,
+.eyelash {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* حالت فعال (وقتی کلیک می‌کنی) */
+.eye-toggle.active .eye-open {
+  opacity: 0;
+}
+
+.eye-toggle.active .eye-closed {
+  opacity: 1;
+}
+
+.eye-toggle.active .eye-slash {
+  opacity: 1;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: drawSlash 0.4s forwards;
+}
+
+/* مژه‌ها */
+.eye-toggle.active .eyelash {
+  opacity: 1;
+}
+
+/* انیمیشن کشیده شدن خط */
+@keyframes drawSlash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* پلک واقعی‌تر (چشم بسته شدن) */
+.eye-toggle.active .eye-icon {
+  animation: blink 0.4s ease;
+}
+
+@keyframes blink {
+  0% { transform: scale(1); }
+  50% { transform: scale(1) translateY(1px); }
+  100% { transform: scale(1); }
+}
+/* بزرگتر و پایین‌تر شدن چشم بسته */
+.eye-toggle.active .eye-closed {
+  transform: translateY(1px) scale(1.08);
+  transform-origin: center center;
+}
+
+.eye-toggle.active .eyelash {
+  transform: translateY(0.5px);
+}
+
+
+
+/* ===== Hacker glow for placeholder ===== */
+.styled-input__placeholder-text .letter {
+  text-shadow: 0 0 10px rgba(0, 255, 170, 0.7);
+}
+
+.styled-input.filled .styled-input__placeholder-text .letter.active {
+  color: #00ff9f;
+}
+
+
+/* ===== Glitch effect when input is filled ===== */
+.styled-input.filled .styled-input__placeholder-text {
+  animation: glitch 1.2s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-1px, 1px); }
+  40% { transform: translate(1px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+.styled-input::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00ff9f, transparent);
+  animation: scanline 1.6s infinite;
+}
+
+@keyframes scanline {
+  0% { width: 0; left: 0; opacity: 0; }
+  50% { width: 100%; left: 0; opacity: 1; }
+  100% { width: 0; left: 100%; opacity: 0; }
+}
+
+/* ===== Glow on input when typing ===== */
+.styled-input.hacker .styled-input__circle:after {
+  box-shadow: 0 0 12px rgba(0, 255, 170, 0.6);
+}
+
+/* ===== Matrix background ===== */
+#matrixCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+
+/* ==== Glitch text effect (برای حروف) ==== */
+@keyframes text-glitch {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+    text-shadow: 0 0 2px #00ffcc, 0 0 4px #00ffcc, -2px 0 #00ffaa, 2px 0 #00ddbb;
+  }
+  20% {
+    transform: translate(-1px, 1px);
+    opacity: 0.85;
+    text-shadow: -2px 0 #00ccff, 2px 1px #00eeff;
+  }
+  40% {
+    transform: translate(1.5px, -1px);
+    opacity: 0.9;
+    text-shadow: 2px 0 #00aaff, -2px -1px #00ddff;
+  }
+  60% {
+    transform: translate(-1.5px, 1px);
+    opacity: 0.8;
+    text-shadow: -2px 0 #00bbdd, 2px 1px #00ccff;
+  }
+  80% {
+    transform: translate(1px, -1px);
+    opacity: 0.9;
+    text-shadow: 2px -1px #00eedd, -2px 0 #00ccff;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 1;
+    text-shadow: 0 0 2px #00ffcc, 0 0 4px #00ffcc;
+  }
+}
+
+/* اعمال افکت به متن placeholder */
+.styled-input__placeholder-text.glitch-effect {
+  animation: text-glitch 1.5s infinite;
+}
+
+/* ===== Glitch effect like the image ===== */
+.styled-input__placeholder-text {
+  position: relative;
+  color: #00ff9f;
+  white-space: nowrap;
+}
+
+.styled-input__placeholder-text::before,
+.styled-input__placeholder-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  clip: rect(0, 9999px, 0, 0);
+  opacity: 0;
+}
+
+.styled-input__placeholder-text::before {
+  color: #00ffea;
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.styled-input__placeholder-text::after {
+  color: #ff00ff;
+  animation: glitch-anim-2 1.8s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+  20% { clip: rect(0, 9999px, 5px, 0); transform: translate(-2px, -2px); }
+  40% { clip: rect(10px, 9999px, 20px, 0); transform: translate(2px, 2px); }
+  60% { clip: rect(20px, 9999px, 30px, 0); transform: translate(-2px, 1px); }
+  80% { clip: rect(30px, 9999px, 40px, 0); transform: translate(2px, -1px); }
+  100% { clip: rect(40px, 9999px, 50px, 0); transform: translate(0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+  25% { clip: rect(0, 9999px, 10px, 0); transform: translate(2px, 2px); }
+  50% { clip: rect(10px, 9999px, 20px, 0); transform: translate(-2px, -1px); }
+  75% { clip: rect(20px, 9999px, 30px, 0); transform: translate(2px, -2px); }
+  100% { clip: rect(30px, 9999px, 40px, 0); transform: translate(0); }
+}
+
+/* فعال شدن گلیچ وقتی input فوکوس شده */
+.styled-input__placeholder-text::before,
+.styled-input__placeholder-text::after {
+  opacity: 1;
+}
+
+.styled-input__placeholder-text.glitch {
+  animation: text-glitch 0.9s infinite;
+}
+
+@keyframes text-glitch {
+  0% { transform: translate(0); opacity: 1; }
+  25% { transform: translate(-2px, 1px); opacity: 0.9; }
+  50% { transform: translate(2px, -1px); opacity: 0.85; }
+  75% { transform: translate(-1px, 2px); opacity: 0.9; }
+  100% { transform: translate(0); opacity: 1; }
+}
+
+
+
+/* ===== FIX: sync glitch with placeholder movement ===== */
+
+/* حرکت عمودی رو بده به wrapper نه متن */
+.styled-input.filled .styled-input__placeholder {
+  transform: translateY(-27px) translateX(-27px);
+  transition: transform 0.7s ease;
+}
+
+
+/* متن گلیچ‌دار دیگه جابه‌جا نشه عمودی */
+.styled-input__placeholder-text,
+.styled-input__placeholder-text::before,
+.styled-input__placeholder-text::after {
+  transform: translate(0, 0);
+}
+
+#hackTitle {
+  display: inline-block;
+  width: 280px;   /* عرض ثابت */
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+.hack-letter {
+  display: inline-block;
+  transform-origin: center;
+}
+
+
+
+
+
+.theme-switch {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 4s ease, transform 4s ease;
+}
+
+body.document-loaded .theme-switch {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.theme-switch .toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.25);
+}
+
+
+.theme-switch .toggle svg {
+  display: block;
+  transform: translateY(-10px) translateX(10); /* این مقدار رو کم و زیاد کن */
+}
+
+
+
+
+.theme-switch .toggle .toggle__icon {
+  font-size: 18px;
+}
+
+.theme-switch .toggle .moon,
+.theme-switch .toggle .sun {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 7s ease;
+}
+
+.theme-switch .toggle .moon {
+  opacity: 1;
+}
+
+body.light .theme-switch .toggle .moon {
+  opacity: 0;
+}
+
+body.light .theme-switch .toggle .sun {
+  opacity: 1;
+}
+
+.theme-switch .toggle .toggle__icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  transition: opacity 0.3s ease;
+}
+
+.theme-switch .toggle .moon {
+  left: 10px;
+  opacity: 1;
+}
+
+.theme-switch .toggle .sun {
+  bottom: -5px;
+
+  right: 8px;
+
+  opacity: 0;
+}
+
+
+
+/* حالت لایت */
+body.light .theme-switch .toggle {
+  background: rgba(255,255,255,0.35);
+  border-color: rgba(0,0,0,0.15);
+}
+
+body.light .theme-switch .toggle .moon {
+  opacity: 0;
+}
+
+body.light .theme-switch .toggle .sun {
+  opacity: 1;
+}
+
+
+
+
+
+
+/* ===== Theme Colors ===== */
+body.dark {
+  background: #3f2766;
+  color: #bf97ff;
+}
+
+body.light {
+  background: #b9b9b9;
+  color: #2b2b2b;
+}
+
+/* background main */
+body.dark main { background: #3f2766; }
+body.light main { background: #b697c2; }
+
+/* form background */
+body.dark .form__cover:after { background: #4d317a; }
+body.light .form__cover:after { background: #d791ff; }
+
+/* input styles */
+body.dark .styled-input {
+  border-color: rgba(255,255,255,0.2);
+}
+body.light .styled-input {
+  border-color: rgba(0, 0, 0, 0.096);
+  background: rgba(100, 59, 134, 0.103);
+}
+
+body.dark .styled-input__input {
+  color: #d1b5ff;
+}
+body.light .styled-input__input {
+  color: #2b2b2b;
+}
+
+/* placeholder text */
+body.dark .styled-input__placeholder-text { color: #00ff9f; }
+body.light .styled-input__placeholder-text { color: #2b2b2b; }
+
+/* button */
+body.dark .styled-button {
+  background: #714cac;
+  color: #492e72;
+}
+body.light .styled-button {
+  background: #a67fa8;
+  color: #2b2b2b;
+}
+
+/* matrix background */
+body.light #matrixCanvas {
+  filter: invert(1) hue-rotate(180deg);
+  opacity: 95%;
+}
+
+
+#matrixCanvas.wave-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+}
+
+body.dark #matrixCanvas {
+  filter: saturate(1.1) contrast(1.2);
+}
+body.light #matrixCanvas {
+  filter: saturate(0.6) contrast(0.8) brightness(0.8);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.forgot-link,
+.back-link {
+    display: block;
+    margin: 20px 0 10px;
+    color: #9b7fd9;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.forgot-link:hover,
+.back-link:hover {
+    color: #00ff9f;
+    text-decoration: underline;
+}
+
+.forgot-section {
+  transition: all 0.4s ease;
+  width: 100%;
+  max-width: 400px;     /* هم‌اندازه فرم اصلی */
+  margin: 0 auto;       /* وسط قرار بگیرد */
+}
+
+.forgot-section.hidden {
+    display: none;
+}
+
+.forgot-section h2 {
+    font-size: 28px;
+    margin: 0 0 15px;
+    color: #714cab;
+}
+
+.forgot-section p {
+    margin: 0 0 25px;
+    font-size: 15px;
+    color: #b0a0d0;
+}
+
+.hcaptcha-wrapper {
+    margin: 20px 0 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* برای لایت تم */
+body.light .forgot-link,
+body.light .back-link { color: #5a3b8a; }
+body.light .forgot-section h2 { color: #7a4fa8; }
+body.light .forgot-section p { color: #4a2b6e; }
+
+
+
+
+
+
+
+
+
+
+
+
+.hidden {
+  display: none !important;
+}

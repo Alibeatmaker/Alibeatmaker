@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ <main>
+    <canvas id="matrixCanvas"></canvas>
+      
+        <form class="form">
+            <div class="form__cover"></div>
+
+            <div class="theme-switch">
+            <button id="themeBtn" class="toggle">
+                <span class="toggle__icon moon">🌙</span>
+                <span class="toggle__icon sun">☀️</span>
+            </button>
+            </div>
+
+            <div class="form__loader">
+                <div class="spinner active">
+                    <svg class="spinner__circular" viewBox="25 25 50 50">
+                        <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                    </svg>
+                </div>
+            </div>
+            <div class="form__content">
+                <div id="loginContent">
+                <h1 id="hackTitle">Authorization</h1>
+                <div class="styled-input">
+                    <input type="text" class="styled-input__input" name="nickname">
+                    <div class="styled-input__placeholder">
+                        <span class="styled-input__placeholder-text">Username</span>
+                    </div>
+                    <div class="styled-input__circle"></div>
+                </div>
+
+                <div class="styled-input">
+                    <input type="password" class="styled-input__input" id="password">
+                   <div class="styled-input__placeholder">
+                       <span class="styled-input__placeholder-text">Password</span>
+                   </div>
+                   <div class="styled-input__circle"></div>
+               
+                   <span class="eye-toggle" id="togglePassword">
+                    <svg class="eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                         <path class="eye-open" fill="none" stroke="white" stroke-width="2"
+                            d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/>
+                         <circle class="eye-open" fill="none" stroke="white" stroke-width="2" cx="12" cy="12" r="3"/>
+                        <path class="eye-closed" fill="none" stroke="white" stroke-width="2" d="M3.5 13c4-6 13-6 17 0" />
+                    <path class="eyelash lash1" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" d="M4.5 10.3 L6.3 7.9" />
+                    <path class="eyelash lash2" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" d="M9.2 9.6 L11 7.3" />
+                    <path class="eyelash lash3" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" d="M13.8 9.6 L15.6 7.3" />
+                    <path class="eyelash lash4" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" d="M18.5 10.3 L20.3 7.9" />
+                        <path class="eye-slash" fill="none" stroke="white" stroke-width="2"
+                            d="M3 3c6 6 12 12 18 18" />
+                    </svg>
+                  </span>
+               </div>
+
+                <button type="button" class="styled-button" id="submitBtn" disabled>
+                    <span class="styled-button__real-text-holder">
+                        <span class="styled-button__real-text">Submit</span>
+                        <span class="styled-button__moving-block face">
+                            <span class="styled-button__text-holder">
+                                <span class="styled-button__text">Submit</span>
+                            </span>
+                        </span>
+                        <span class="styled-button__moving-block back">
+                            <span class="styled-button__text-holder">
+                                <span class="styled-button__text">Submit</span>
+                            </span>
+                        </span>
+                    </span>
+                </button>
+
+                <a href="#" id="forgotPasswordLink" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <div id="forgotSection" class="forgot-section hidden">
+                    <h2>Reset Password</h2>
+                    <p>Enter your email/username to receive a reset link.</p>
+                
+                    <div class="styled-input">
+                        <input type="text" class="styled-input__input" id="resetEmail" autocomplete="email" placeholder=" ">
+                        <div class="styled-input__placeholder">
+                            <span class="styled-input__placeholder-text">Email or Username</span>
+                        </div>
+                        <div class="styled-input__circle"></div>
+                    </div>
+                
+                    <div class="hcaptcha-wrapper">
+                        <div class="h-captcha" data-sitekey="0f50dd52-765a-4cd2-adc8-0784abc479c6"></div>
+                    </div>
+                
+                    <button type="button" class="styled-button" id="resetBtn">
+                        <span class="styled-button__real-text-holder">
+                            <span class="styled-button__real-text">Send Reset Link</span>
+                            <span class="styled-button__moving-block face">...</span>
+                            <span class="styled-button__moving-block back">...</span>
+                        </span>
+                    </button>
+                
+                    <a href="#" id="backToLogin" class="back-link">Back to Login</a>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+
+</body>
+<script src="js.js"></script>
+</html>
