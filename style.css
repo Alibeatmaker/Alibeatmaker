@@ -644,7 +644,7 @@ body.document-loaded .form__cover:before {
   color: #00ff9f;
 }
 
-
+  
 /* ===== Glitch effect when input is filled ===== */
 .styled-input.filled .styled-input__placeholder-text {
   animation: glitch 1.2s infinite;
