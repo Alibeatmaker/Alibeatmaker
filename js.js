@@ -349,24 +349,16 @@ const resetInput      = document.getElementById('resetEmail');
 forgotLink.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const login = document.getElementById('loginContent');
-  const forgot = forgotSection;
-
-  login.classList.add('hidden-left');
-  forgot.classList.remove('hidden-right');
+  document.getElementById('loginContent').classList.add('hidden');
+  forgotSection.classList.remove('hidden');
 });
-
 
 backToLogin.addEventListener('click', (e) => {
   e.preventDefault();
 
-  const login = document.getElementById('loginContent');
-  const forgot = forgotSection;
-
-  forgot.classList.add('hidden-right');
-  login.classList.remove('hidden-left');
+  forgotSection.classList.add('hidden');
+  document.getElementById('loginContent').classList.remove('hidden');
 });
-
 
 
 
