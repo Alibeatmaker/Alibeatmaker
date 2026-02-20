@@ -147,13 +147,7 @@ body.document-loaded .form__cover:before {
           transform: scale(2);
   opacity: 0;
 }
-h1 {
-  font-size: 40px;
-  margin: 15px 0 20px 0;
-  letter-spacing: 0.05em;
-  color: #714cab;
-  font-weight: 700;
-}
+
 .styled-button {
   -webkit-appearance: none;
   -webkit-user-select: none;
@@ -283,7 +277,7 @@ h1 {
 .styled-input__input {
   width: 100%;
   -webkit-appearance: none;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
   background: none;
   padding: 18px 15px;
@@ -730,10 +724,7 @@ h1 {
   }
 }
 
-/* اعمال افکت به متن placeholder */
-.styled-input__placeholder-text.glitch-effect {
-  animation: text-glitch 1.5s infinite;
-}
+
 
 /* ===== Glitch effect like the image ===== */
 .styled-input__placeholder-text {
@@ -787,9 +778,7 @@ h1 {
   opacity: 1;
 }
 
-.styled-input__placeholder-text.glitch {
-  animation: text-glitch 0.9s infinite;
-}
+
 
 @keyframes text-glitch {
   0% { transform: translate(0); opacity: 1; }
@@ -817,18 +806,9 @@ h1 {
   transform: translate(0, 0);
 }
 
-#hackTitle {
-  display: inline-block;
-  width: 280px;   /* عرض ثابت */
-  text-align: center;
-  white-space: nowrap;
-}
 
 
-.hack-letter {
-  display: inline-block;
-  transform-origin: center;
-}
+
 
 
 
@@ -1091,4 +1071,29 @@ body.light .forgot-section p { color: #4a2b6e; }
 
 .hidden {
   display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+body,
+.form,
+.styled-button,
+input,
+canvas,
+button {
+  transition: background 0.7s ease, 
+              color 0.7s ease, 
+              border-color 0.7s ease,
+              box-shadow 0.7s ease;
 }

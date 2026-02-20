@@ -214,67 +214,13 @@ drawMatrix();
 
 
 
-const hackTitle = document.getElementById("hackTitle");
-const hackLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
-const originalText = hackTitle.innerText;
-
-// متن رو تبدیل به span می‌کنیم
-hackTitle.innerHTML = originalText
-  .split("")
-  .map(char => `<span class="hack-letter">${char}</span>`)
-  .join("");
 
 
 
 
-  function runHackText() {
-    const letters = document.querySelectorAll(".hack-letter");
-    const total = letters.length;
-    let progress = 0;
-  
-    const interval = setInterval(() => {
-      for (let i = 0; i < total; i++) {
-        // فاصله از مرکز
-        const distFromCenter = Math.abs(i - total / 2);
-  
-        // احتمال اینکه حرف عوض بشه بر اساس فاصله از مرکز
-        const chance = Math.max(0.2, 1 - distFromCenter / (total / 2));
-  
-        if (Math.random() < chance) {
-          letters[i].innerText = hackLetters[Math.floor(Math.random() * hackLetters.length)];
-        }
-      }
-  
-      // کم کم حرف‌ها ثابت میشن از مرکز به سمت لبه‌ها
-      progress += 0.18;
-      const fixedCount = Math.floor(progress);
-  
-      for (let i = 0; i < fixedCount; i++) {
-        const leftIndex = Math.floor(total / 2) - i;
-        const rightIndex = Math.ceil(total / 2) + i;
-  
-        if (letters[leftIndex]) letters[leftIndex].innerText = originalText[leftIndex];
-        if (letters[rightIndex]) letters[rightIndex].innerText = originalText[rightIndex];
-      }
-  
-      if (fixedCount >= total / 2) {
-        clearInterval(interval);
-      }
-    }, 80);
-  }
 
-setTimeout(() => {
-  runHackText();
-}, 2600);
 
-setTimeout(() => {
-  const title = document.getElementById("hackTitle");
 
-  const rect = title.getBoundingClientRect();
-  title.style.width = rect.width + "px";
-  title.style.display = "inline-block";
-  title.style.whiteSpace = "nowrap";
-});
 
 
 
@@ -294,15 +240,25 @@ window.addEventListener("load", () => {
   setTheme(savedTheme);
 });
 
+
+
+
+
+
+
 themeBtn.addEventListener("click", () => {
   const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
-  setTheme(currentTheme === "dark" ? "light" : "dark");
+  const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+  themeBtn.disabled = true;
+
+  setTimeout(() => {
+    setTheme(nextTheme);
+    themeBtn.disabled = false;
+  }, 400);
 });
 
 
-setTimeout(function () {
-  document.body.classList.add('document-loaded');
-}, 3500);
 
 
 
