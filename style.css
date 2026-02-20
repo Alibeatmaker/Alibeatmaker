@@ -643,7 +643,7 @@ body.document-loaded .form__cover:before {
 .styled-input.filled .styled-input__placeholder-text .letter.active {
   color: #00ff9f;
 }
-
+ 
   
 /* ===== Glitch effect when input is filled ===== */
 .styled-input.filled .styled-input__placeholder-text {
