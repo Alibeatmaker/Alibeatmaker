@@ -295,17 +295,22 @@ window.addEventListener("mouseleave", () => {
 
 
 
-
 const forgotLink      = document.getElementById('forgotPasswordLink');
 const forgotSection   = document.getElementById('forgotSection');
 const backToLogin     = document.getElementById('backToLogin');
 const resetBtn        = document.getElementById('resetBtn');
 const resetInput      = document.getElementById('resetEmail');
 
+
+const loginContent    = document.getElementById('loginContent');
+
 forgotLink.addEventListener('click', (e) => {
   e.preventDefault();
 
-  document.getElementById('loginContent').classList.add('hidden');
+  loginContent.classList.add('hidden');
+  switchAuth.classList.add('hidden');
+  hackTitle.classList.add('hidden');
+
   forgotSection.classList.remove('hidden');
 });
 
@@ -313,9 +318,11 @@ backToLogin.addEventListener('click', (e) => {
   e.preventDefault();
 
   forgotSection.classList.add('hidden');
-  document.getElementById('loginContent').classList.remove('hidden');
-});
 
+  loginContent.classList.remove('hidden');
+  switchAuth.classList.remove('hidden');
+  hackTitle.classList.remove('hidden');
+});
 
 
 resetBtn.addEventListener('click', () => {
@@ -344,3 +351,86 @@ resetBtn.addEventListener('click', () => {
   // ریست کپچا بعد از استفاده
   hcaptcha.reset();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const switchAuth = document.getElementById("switchAuth");
+
+let isLogin = true;
+
+switchAuth.addEventListener("click", () => {
+  if (isLogin) {
+    switchAuth.textContent = "Sign In";
+  } else {
+    switchAuth.textContent = "Create Account";
+  }
+
+  isLogin = !isLogin;
+});
+
+
+
+
+
+
+
+const hackTitle = document.getElementById("hackTitle");
+const hackLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+const originalText = hackTitle.innerText;
+
+hackTitle.innerHTML = originalText
+  .split("")
+  .map(char => `<span class="hack-letter">${char}</span>`)
+  .join("");
+
+
+
+  function runHackText() {
+  const letters = document.querySelectorAll(".hack-letter");
+  const total = letters.length;
+  let progress = 0;
+
+  const interval = setInterval(() => {
+    for (let i = 0; i < total; i++) {
+      const distFromCenter = Math.abs(i - total / 2);
+      const chance = Math.max(0.2, 1 - distFromCenter / (total / 2));
+
+      if (Math.random() < chance) {
+        letters[i].innerText = hackLetters[Math.floor(Math.random() * hackLetters.length)];
+      }
+    }
+
+    progress += 0.07;
+    const fixedCount = Math.floor(progress);
+
+    for (let i = 0; i < fixedCount; i++) {
+      const leftIndex = Math.floor(total / 2) - i;
+      const rightIndex = Math.ceil(total / 2) + i;
+
+      if (letters[leftIndex]) letters[leftIndex].innerText = originalText[leftIndex];
+      if (letters[rightIndex]) letters[rightIndex].innerText = originalText[rightIndex];
+    }
+
+    if (fixedCount >= total / 2) {
+      clearInterval(interval);
+    }
+  }, 120);
+}
+
+setTimeout(() => {
+  runHackText();
+}, 2250);

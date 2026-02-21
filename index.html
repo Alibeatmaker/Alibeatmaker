@@ -12,25 +12,34 @@
 
  <main>
     <canvas id="matrixCanvas"></canvas>
-      
-        <form class="form">
-            <div class="form__cover"></div>
 
             <div class="theme-switch">
-            <button id="themeBtn" class="toggle">
-                <span class="toggle__icon moon">🌙</span>
-                <span class="toggle__icon sun">☀️</span>
-            </button>
+                <button id="themeBtn" class="toggle">
+                    <span class="toggle__icon moon">🌙</span>
+                    <span class="toggle__icon sun">☀️</span>
+                </button>
             </div>
+
+        <form class="form">
+            <div class="form__cover"></div>
 
             <div class="form__loader">
                 <div class="spinner active">
                     <svg class="spinner__circular" viewBox="25 25 50 50">
-                        <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
+                        <circle class="spinner__path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
                     </svg>
                 </div>
             </div>
             <div class="form__content">
+
+                
+                <button class="switch-auth" id="switchAuth">
+                    Create Account
+                </button>
+                
+                <h1 id="hackTitle">LOGIN</h1>
+
+
                  <div id="loginContent">
                         <div class="styled-input">
                             <input type="text" class="styled-input__input" name="nickname">

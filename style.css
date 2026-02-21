@@ -104,13 +104,15 @@ main {
 .form__cover:before {
   content: '';
   position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
+  left: 50%;
+  top: 50%;
+  width: 450px;  /* 👈 بزرگ‌تر کردم */
+  height: 450px; /* 👈 بزرگ‌تر کردم */
   background: white;
   z-index: -5;
   border-radius: 50%;
+  margin-left: -225px;  /* 👈 نصف عرض */
+  margin-top: -225px;   /* 👈 نصف ارتفاع */
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   -webkit-transform: scale(0);
@@ -929,11 +931,11 @@ body.light {
 
 /* background main */
 body.dark main { background: #3f2766; }
-body.light main { background: #b697c2; }
+body.light main { background: #877091; }
 
 /* form background */
 body.dark .form__cover:after { background: #4d317a; }
-body.light .form__cover:after { background: #d791ff; }
+body.light .form__cover:after { background: #b566ff; }
 
 /* input styles */
 body.dark .styled-input {
@@ -1074,18 +1076,6 @@ body.light .forgot-section p { color: #4a2b6e; }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 body,
 .form,
 .styled-button,
@@ -1096,4 +1086,53 @@ button {
               color 0.7s ease, 
               border-color 0.7s ease,
               box-shadow 0.7s ease;
+}
+
+
+
+
+
+.switch-auth {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+    margin: 15px 0 25px 0;
+    border-radius: 30px;
+}
+
+.switch-auth:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.08);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#hackTitle {
+  display: block;
+  margin: 0px 0 20px 0;
+  width: 100%;
+  letter-spacing: 10px;
+  text-align: center;
+  color: #8e60be;
+  white-space: nowrap;
+}
+
+.hack-letter {
+  display: inline-block;
+  transform-origin: center;
 }
