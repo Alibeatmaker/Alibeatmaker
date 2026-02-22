@@ -935,7 +935,7 @@ body.light main { background: #877091; }
 
 /* form background */
 body.dark .form__cover:after { background: #4d317a; }
-body.light .form__cover:after { background: #b566ff; }
+body.light .form__cover:after { background: #c09ce0; }
 
 /* input styles */
 body.dark .styled-input {
