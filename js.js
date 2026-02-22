@@ -20,7 +20,7 @@ placeholders.forEach(function (el) {
     html += `<span class="letter">${w}</span>`;
   }
   el.innerHTML = html;
-
+ 
   // همیشه گلیچ فعال
   el.classList.add("glitch");
 });
