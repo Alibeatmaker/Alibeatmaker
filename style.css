@@ -652,6 +652,10 @@ body.document-loaded .form__cover:before {
   animation: glitch 1.2s infinite;
 }
 
+.styled-input__placeholder-text {
+  animation: glitch 1.2s infinite;
+}
+
 @keyframes glitch {
   0% { transform: translate(0, 0); }
   20% { transform: translate(-1px, 1px); }
