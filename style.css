@@ -319,13 +319,6 @@ body.document-loaded .form__cover:before {
   -webkit-animation: letterAnimIn 0.25s ease forwards;
           animation: letterAnimIn 0.25s ease forwards;
 }
-
-
-.styled-input.filled .styled-input__placeholder-text .letter.active {
-  animation: letterAnimIn 0.25s ease forwards, glitch 1.2s infinite;
-}
-
-
 .styled-input:hover {
   border-color: rgba(255, 255, 255, 0.4);
 }
@@ -650,7 +643,6 @@ body.document-loaded .form__cover:before {
 }
 
 .styled-input.filled .styled-input__placeholder-text .letter.active {
-  animation: letterAnimIn 0.25s ease forwards;
   color: #00ff9f;
 }
  
@@ -659,7 +651,6 @@ body.document-loaded .form__cover:before {
 .styled-input.filled .styled-input__placeholder-text {
   animation: glitch 1.2s infinite;
 }
-
 
 @keyframes glitch {
   0% { transform: translate(0, 0); }
