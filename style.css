@@ -319,13 +319,6 @@ body.document-loaded .form__cover:before {
   -webkit-animation: letterAnimIn 0.25s ease forwards;
           animation: letterAnimIn 0.25s ease forwards;
 }
-
-
-.styled-input__placeholder-text .letter {
-  animation: letterAnimIn 0.25s ease forwards;
-}
-
-
 .styled-input:hover {
   border-color: rgba(255, 255, 255, 0.4);
 }
