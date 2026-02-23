@@ -103,12 +103,26 @@ submitBtn.addEventListener('click', function () {
   document.querySelectorAll('.styled-input').forEach(el => el.classList.remove('error'));
 
   if (!usernameInput.value.trim()) {
-    usernameInput.parentNode.classList.add('error');
+    const elem = usernameInput.parentNode;
+    elem.classList.add('error');
+    
+    elem.addEventListener('animationend', function removeError() {
+      elem.classList.remove('error');
+      elem.removeEventListener('animationend', removeError);
+    });
+    
     return;
   }
 
   if (!passwordInput.value.trim()) {
-    passwordInput.parentNode.classList.add('error');
+    const elem = passwordInput.parentNode;
+    elem.classList.add('error');
+    
+    elem.addEventListener('animationend', function removeError() {
+      elem.classList.remove('error');
+      elem.removeEventListener('animationend', removeError);
+    });
+    
     return;
   }
 
@@ -302,7 +316,6 @@ const resetBtn        = document.getElementById('resetBtn');
 const resetInput      = document.getElementById('resetEmail');
 
 
-const loginContent    = document.getElementById('loginContent');
 
 forgotLink.addEventListener('click', (e) => {
   e.preventDefault();
@@ -312,6 +325,9 @@ forgotLink.addEventListener('click', (e) => {
   hackTitle.classList.add('hidden');
 
   forgotSection.classList.remove('hidden');
+
+  document.title = "Reset Password | Alibeatmaker";
+
 });
 
 backToLogin.addEventListener('click', (e) => {
@@ -330,25 +346,19 @@ resetBtn.addEventListener('click', () => {
   const captchaResponse = hcaptcha.getResponse();
 
   if (!value) {
-      resetInput.parentNode.classList.add('error');
+      const parent = resetInput.parentNode;
+      parent.classList.remove('error');
+      void parent.offsetWidth; // ریست انیمیشن
+      parent.classList.add('error');
       return;
   }
 
-  // اگر کپچا حل نشده
   if (!captchaResponse) {
       alert("Please complete the captcha");
       return;
   }
 
-  // چک ساده ایمیل
-  if (value.includes('@') && !value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      alert("Please enter a valid email format");
-      return;
-  }
-
   alert(`Reset link would be sent to: ${value}`);
-
-  // ریست کپچا بعد از استفاده
   hcaptcha.reset();
 });
 
@@ -368,18 +378,73 @@ resetBtn.addEventListener('click', () => {
 
 
 
-const switchAuth = document.getElementById("switchAuth");
+const registerContent = document.getElementById("registerContent");
+const loginContent = document.getElementById("loginContent");
 
 let isLogin = true;
 
+const switchAuth = document.getElementById("switchAuth");
+const hackTitle = document.getElementById("hackTitle");
+
+const regUsername = document.getElementById("regUsername");
+const regEmail = document.getElementById("regEmail");
+const regPassword = document.getElementById("regPassword");
+const regPassword2 = document.getElementById("regPassword2");
+
 switchAuth.addEventListener("click", () => {
+
   if (isLogin) {
+    // رفتن به ثبت نام
+    loginContent.classList.add("hidden");
+    registerContent.classList.remove("hidden");
+
+    hackTitle.innerText = "REGISTER";
     switchAuth.textContent = "Sign In";
+
+        document.title = "Register | Alibeatmaker"; // ← این خ
+
   } else {
+    // برگشت به لاگین
+    registerContent.classList.add("hidden");
+    loginContent.classList.remove("hidden");
+
+    hackTitle.innerText = "LOGIN";
     switchAuth.textContent = "Create Account";
+
+        document.title = "Login | Alibeatmaker"; // ← این خط
+
   }
 
   isLogin = !isLogin;
+}); 
+
+
+
+
+
+
+
+
+const registerBtn = document.getElementById("registerBtn");
+
+registerBtn.addEventListener("click", () => {
+
+  const username = regUsername.value.trim();
+  const email = regEmail.value.trim();
+  const pass1 = regPassword.value.trim();
+  const pass2 = regPassword2.value.trim();
+
+  if (!username || !email || !pass1 || !pass2) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  if (pass1 !== pass2) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  alert("Account created!");
 });
 
 
@@ -388,7 +453,6 @@ switchAuth.addEventListener("click", () => {
 
 
 
-const hackTitle = document.getElementById("hackTitle");
 const hackLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
 const originalText = hackTitle.innerText;
 
