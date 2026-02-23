@@ -1140,3 +1140,195 @@ button {
   display: inline-block;
   transform-origin: center;
 }
+
+
+
+
+
+
+
+
+
+/* ===== Fancy Switch Button Animation ===== */
+
+.switch-auth {
+  position: relative;
+  transition: transform 0.2s ease, letter-spacing 0.2s ease;
+}
+
+/* glow */
+.switch-auth.fancy-click {
+  transform: scale(0.9);
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 5px #7b23ff,
+    0 0 10px #7b23ff,
+    0 0 20px #7b23ff;
+}
+
+/* energy wave */
+.switch-auth::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(123,35,255,0.6), transparent 70%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.switch-auth.wave::after {
+  animation: energyWave 0.6s ease;
+}
+
+@keyframes energyWave {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+  }
+}
+
+/* glitch text */
+.switch-auth.glitch {
+  animation: glitchBtn 0.25s linear;
+}
+
+@keyframes glitchBtn {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, 2px); }
+  80% { transform: translate(1px, -2px); }
+  100% { transform: translate(0); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== Portal Animation ===== */
+
+.portal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background:
+    radial-gradient(circle,
+      #7b23ff 0%,
+      #00f0ff 40%,
+      transparent 70%);
+  box-shadow:
+    0 0 20px #7b23ff,
+    0 0 60px #7b23ff,
+    inset 0 0 40px rgba(255,255,255,0.2);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.portal.active {
+  animation: portalOpen 0.9s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes portalOpen {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  40% {
+    width: 180px;
+    height: 180px;
+  }
+  70% {
+    width: 420px;
+    height: 420px;
+  }
+  100% {
+    width: 520px;
+    height: 520px;
+    opacity: 0;
+  }
+}
+
+/* فرم محو شود */
+.form-transition-out {
+  animation: formFadeOut 0.35s ease forwards;
+}
+
+@keyframes formFadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.form-transition-in {
+  animation: formFadeIn 0.45s ease forwards;
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.form-swallowed {
+  animation: swallow 0.45s ease forwards;
+}
+
+@keyframes swallow {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}

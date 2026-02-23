@@ -391,32 +391,71 @@ const regEmail = document.getElementById("regEmail");
 const regPassword = document.getElementById("regPassword");
 const regPassword2 = document.getElementById("regPassword2");
 
+
+
+
+
+
+
+
+const portal = document.getElementById("portal");
+
 switchAuth.addEventListener("click", () => {
 
-  if (isLogin) {
-    // رفتن به ثبت نام
-    loginContent.classList.add("hidden");
-    registerContent.classList.remove("hidden");
+  // انیمیشن دکمه
+  switchAuth.classList.remove("fancy-click","wave","glitch");
+  void switchAuth.offsetWidth;
+  switchAuth.classList.add("fancy-click","wave","glitch");
 
-    hackTitle.innerText = "REGISTER";
-    switchAuth.textContent = "Sign In";
+  // پورتال باز شود
+  portal.classList.remove("active");
+  void portal.offsetWidth;
+  portal.classList.add("active");
 
-        document.title = "Register | Alibeatmaker"; // ← این خ
+// فرم فعلی
+const currentForm = isLogin ? loginContent : registerContent;
+const nextForm = isLogin ? registerContent : loginContent;
 
-  } else {
-    // برگشت به لاگین
-    registerContent.classList.add("hidden");
-    loginContent.classList.remove("hidden");
+// ریست کامل انیمیشن‌ها
+loginContent.classList.remove("form-transition-out","form-transition-in","form-swallowed");
+registerContent.classList.remove("form-transition-out","form-transition-in","form-swallowed");
 
-    hackTitle.innerText = "LOGIN";
-    switchAuth.textContent = "Create Account";
+// اجرای انیمیشن بلعیده شدن فقط برای فرم فعلی
+void currentForm.offsetWidth;
+currentForm.classList.add("form-swallowed");
 
-        document.title = "Login | Alibeatmaker"; // ← این خط
 
-  }
 
-  isLogin = !isLogin;
-}); 
+  setTimeout(() => {
+
+    if (isLogin) {
+      loginContent.classList.add("hidden");
+      registerContent.classList.remove("hidden");
+
+      void registerContent.offsetWidth;
+      registerContent.classList.add("form-transition-in");
+
+      hackTitle.innerText = "REGISTER";
+      switchAuth.textContent = "Sign In";
+      document.title = "Register | Alibeatmaker";
+
+    } else {
+      registerContent.classList.add("hidden");
+      loginContent.classList.remove("hidden");
+
+      void loginContent.offsetWidth;
+      loginContent.classList.add("form-transition-in");
+
+      hackTitle.innerText = "LOGIN";
+      switchAuth.textContent = "Create Account";
+      document.title = "Login | Alibeatmaker";
+    }
+
+    isLogin = !isLogin;
+
+  }, 350);
+
+});
 
 
 
@@ -498,3 +537,15 @@ hackTitle.innerHTML = originalText
 setTimeout(() => {
   runHackText();
 }, 2250);
+
+
+
+
+
+
+
+
+
+
+
+
