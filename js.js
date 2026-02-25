@@ -160,11 +160,11 @@ cycleColor();
 
 function drawWaveOverlay() {
   const time = performance.now() / 1000;
-  const amplitude = document.body.classList.contains("dark") ? 18 : 10;
+  const amplitude = 18;
   const wavelength = 220;
 
   ctx.save();
-  ctx.globalAlpha = document.body.classList.contains("dark") ? 15 : 15;
+  ctx.globalAlpha = 1;
   ctx.globalCompositeOperation = "screen";
   ctx.strokeStyle = `hsla(${hue}, 100%, 60%, 0.7)`;
   ctx.lineWidth = 2;
@@ -183,7 +183,10 @@ function drawWaveOverlay() {
 }
 
 function drawMatrix() {
-  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+const fade = document.body.classList.contains("light") ? 0.12 : 0.05;
+ctx.fillStyle = document.body.classList.contains("light")
+  ? `rgba(255,255,255,${fade})`
+  : `rgba(0,0,0,${fade})`;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   const px = (mouse.x / canvas.width - 0.5) * 2;
